@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 import "./globals.css";
 
 const inter = Inter({
@@ -25,8 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="bg">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} antialiased`}>
-        {children}
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} flex min-h-dvh flex-col antialiased`}
+      >
+        <SiteHeader />
+        <div className="flex-1">{children}</div>
+        <SiteFooter />
       </body>
     </html>
   );
