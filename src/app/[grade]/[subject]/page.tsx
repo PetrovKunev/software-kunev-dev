@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Topic } from "@/data/types";
@@ -6,10 +7,34 @@ import {
   formatWeeks,
   getAvailableGrades,
   getSubject,
+  subjectPath,
   toRoman,
 } from "@/lib/curriculum";
 
 export const dynamicParams = false;
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ grade: string; subject: string }>;
+}): Promise<Metadata> {
+  const { grade: gradeId, subject: subjectId } = await params;
+  const found = getSubject(gradeId, subjectId);
+  if (!found) return {};
+  const { grade, subject } = found;
+  const path = subjectPath(grade.id, subject.id);
+
+  return {
+    title: `${subject.name} · ${grade.label}`,
+    description: subject.tagline,
+    alternates: { canonical: path },
+    openGraph: {
+      title: `${subject.name} · ${grade.label}`,
+      description: subject.tagline,
+      url: path,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return getAvailableGrades().flatMap((grade) =>
