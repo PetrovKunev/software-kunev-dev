@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  /* Cyber teal dark palette */
+  --color-background: #060b10;
+  --color-surface: #0b141b;
+  --color-surface-raised: #101c25;
+  --color-edge: #16232e;
+  --color-edge-bright: #1e3440;
+
+  --color-foreground: #dbe7ee;
+  --color-muted: #8ba3b2;
+  --color-faint: #5d7482;
+
+  --color-accent: #2dd4bf;
+  --color-accent-bright: #5eead4;
+  --color-accent-dim: #0d9488;
+  --color-accent-deep: #134e4a;
+  --color-cyan-glow: #22d3ee;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  min-height: 100dvh;
+}
+
+::selection {
+  background-color: var(--color-accent-deep);
+  color: var(--color-accent-bright);
+}
+
+/* Subtle teal grid backdrop */
+.cyber-grid {
+  background-image:
+    linear-gradient(to right, rgb(45 212 191 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(45 212 191 / 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Teal glow for accent elements */
+.glow-teal {
+  box-shadow: 0 0 24px rgb(45 212 191 / 0.15);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgb(45 212 191 / 0.35);
+}
