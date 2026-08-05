@@ -9,9 +9,21 @@ import {
   getSubject,
   subjectPath,
   toRoman,
+  topicPath,
 } from "@/lib/curriculum";
+import { getMaterials } from "@/lib/materials";
+import { hasTheory } from "@/lib/theory";
 
 export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return getAvailableGrades().flatMap((grade) =>
+    grade.subjects.map((subject) => ({
+      grade: grade.id,
+      subject: subject.id,
+    }))
+  );
+}
 
 export async function generateMetadata({
   params,
@@ -36,79 +48,41 @@ export async function generateMetadata({
   };
 }
 
-export function generateStaticParams() {
-  return getAvailableGrades().flatMap((grade) =>
-    grade.subjects.map((subject) => ({
-      grade: grade.id,
-      subject: subject.id,
-    }))
-  );
-}
-
-function StrandList({
-  label,
-  accentClass,
-  items,
+function AvailabilityBadges({
+  gradeId,
+  subjectId,
+  topic,
 }: {
-  label: string;
-  accentClass: string;
-  items: string[];
+  gradeId: string;
+  subjectId: string;
+  topic: Topic;
 }) {
-  return (
-    <div className="rounded-lg border border-edge bg-surface p-4">
-      <h4
-        className={`font-mono text-xs font-bold tracking-[0.2em] uppercase ${accentClass}`}
-      >
-        {label}
-      </h4>
-      <ul className="mt-3 space-y-2 text-sm text-muted">
-        {items.map((item) => (
-          <li key={item} className="flex gap-2">
-            <span className={`mt-1 select-none ${accentClass}`}>▸</span>
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
+  const materials = getMaterials(gradeId, subjectId, topic.id);
+  const badges = [
+    { label: "теория", available: hasTheory(gradeId, subjectId, topic.id) },
+    { label: "задачи", available: Boolean(materials?.tasks?.length) },
+    { label: "тест", available: Boolean(materials?.quiz) },
+  ].filter((badge) => badge.available);
 
-function TopicCard({ topic }: { topic: Topic }) {
-  return (
-    <details
-      id={topic.id}
-      className="group rounded-xl border border-edge bg-surface-raised transition-colors open:border-accent-dim"
-    >
-      <summary className="flex cursor-pointer list-none items-center gap-4 p-5 [&::-webkit-details-marker]:hidden">
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-edge-bright bg-surface font-mono text-sm font-bold text-accent">
-          {topic.number}
-        </span>
-        <span className="flex-1">
-          <span className="block font-semibold text-foreground group-open:text-accent-bright">
-            {topic.title}
-          </span>
-          <span className="mt-1 block font-mono text-[12px] text-faint">
-            {formatWeeks(topic.weeks)}
-          </span>
-        </span>
-        <span className="select-none text-faint transition-transform group-open:rotate-90">
-          ›
-        </span>
-      </summary>
+  if (badges.length === 0) {
+    return (
+      <span className="rounded-full border border-edge px-2.5 py-0.5 font-mono text-[10px] text-faint">
+        материали предстоят
+      </span>
+    );
+  }
 
-      <div className="grid gap-4 border-t border-edge p-5 md:grid-cols-2">
-        <StrandList
-          label="Теория"
-          accentClass="text-accent"
-          items={topic.theory.items}
-        />
-        <StrandList
-          label="Практика"
-          accentClass="text-cyan-glow"
-          items={topic.practice.items}
-        />
-      </div>
-    </details>
+  return (
+    <>
+      {badges.map((badge) => (
+        <span
+          key={badge.label}
+          className="rounded-full border border-accent-deep bg-accent-deep/20 px-2.5 py-0.5 font-mono text-[10px] text-accent-bright"
+        >
+          ✓ {badge.label}
+        </span>
+      ))}
+    </>
   );
 }
 
@@ -175,7 +149,33 @@ export default async function SubjectPage({
           </h2>
           <div className="mt-5 space-y-4">
             {section.topics.map((topic) => (
-              <TopicCard key={topic.id} topic={topic} />
+              <Link
+                key={topic.id}
+                href={topicPath(grade.id, subject.id, topic.id)}
+                className="group flex items-center gap-4 rounded-xl border border-edge bg-surface-raised p-5 transition-colors hover:border-accent-dim"
+              >
+                <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-edge-bright bg-surface font-mono text-sm font-bold text-accent">
+                  {topic.number}
+                </span>
+                <span className="flex-1">
+                  <span className="block font-semibold text-foreground group-hover:text-accent-bright">
+                    {topic.title}
+                  </span>
+                  <span className="mt-1.5 flex flex-wrap items-center gap-2">
+                    <span className="font-mono text-[12px] text-faint">
+                      {formatWeeks(topic.weeks)}
+                    </span>
+                    <AvailabilityBadges
+                      gradeId={grade.id}
+                      subjectId={subject.id}
+                      topic={topic}
+                    />
+                  </span>
+                </span>
+                <span className="select-none text-faint transition-transform group-hover:translate-x-1 group-hover:text-accent">
+                  →
+                </span>
+              </Link>
             ))}
           </div>
         </section>

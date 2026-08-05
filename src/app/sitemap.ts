@@ -1,5 +1,10 @@
 import type { MetadataRoute } from "next";
-import { getAvailableGrades, subjectPath } from "@/lib/curriculum";
+import {
+  flattenTopics,
+  getAvailableGrades,
+  subjectPath,
+  topicPath,
+} from "@/lib/curriculum";
 
 const BASE_URL = "https://software.kunev.dev";
 
@@ -12,6 +17,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
+  const topicPages = getAvailableGrades().flatMap((grade) =>
+    grade.subjects.flatMap((subject) =>
+      flattenTopics(subject).map(({ topic }) => ({
+        url: `${BASE_URL}${topicPath(grade.id, subject.id, topic.id)}`,
+        changeFrequency: "weekly" as const,
+        priority: 0.6,
+      }))
+    )
+  );
+
   return [
     {
       url: BASE_URL,
@@ -19,5 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...subjectPages,
+    ...topicPages,
   ];
 }
