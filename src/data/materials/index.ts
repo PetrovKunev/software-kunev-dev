@@ -1,4 +1,5 @@
 import type { TopicMaterials } from "@/data/types";
+import { tema1 } from "./8/digitalni-tehnologii/tema-1";
 
 /**
  * Регистър на материалите по теми.
@@ -9,4 +10,6 @@ import type { TopicMaterials } from "@/data/types";
  *   2. Импортирайте го тук и го добавете в обекта.
  * Теорията (дълъг текст) се добавя отделно като content/<клас>/<предмет>/<тема>/teoria.mdx.
  */
-export const materialsRegistry: Record<string, TopicMaterials> = {};
+export const materialsRegistry: Record<string, TopicMaterials> = {
+  "8/digitalni-tehnologii/tema-1": tema1,
+};
