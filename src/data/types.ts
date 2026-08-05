@@ -68,3 +68,39 @@ export interface Grade {
 export interface Curriculum {
   grades: Grade[];
 }
+
+/* ---------------------------------------------------------------------------
+ * Материали към тема: тест за самопроверка и практически задачи.
+ * Дългият учебен текст (теория) живее отделно като MDX файл:
+ * content/<клас>/<предмет>/<тема>/teoria.mdx
+ * ------------------------------------------------------------------------- */
+
+export interface QuizQuestion {
+  id: string;
+  text: string;
+  choices: string[];
+  /** 0-базирани индекси на верните отговори; един елемент = единичен избор. */
+  correct: number[];
+  /** Показва се след проверката. */
+  explanation?: string;
+}
+
+export interface Quiz {
+  questions: QuizQuestion[];
+}
+
+export interface PracticeTask {
+  id: string;
+  title: string;
+  /** Какво трябва да се постигне. */
+  goal: string;
+  steps: string[];
+  /** Какво се предава/показва като краен резултат. */
+  deliverable?: string;
+  hint?: string;
+}
+
+export interface TopicMaterials {
+  quiz?: Quiz;
+  tasks?: PracticeTask[];
+}
