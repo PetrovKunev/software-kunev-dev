@@ -1,5 +1,6 @@
 import type { TopicMaterials } from "@/data/types";
 import { tema1 } from "./8/digitalni-tehnologii/tema-1";
+import { tema2 } from "./8/digitalni-tehnologii/tema-2";
 
 /**
  * Регистър на материалите по теми.
@@ -12,4 +13,5 @@ import { tema1 } from "./8/digitalni-tehnologii/tema-1";
  */
 export const materialsRegistry: Record<string, TopicMaterials> = {
   "8/digitalni-tehnologii/tema-1": tema1,
+  "8/digitalni-tehnologii/tema-2": tema2,
 };
