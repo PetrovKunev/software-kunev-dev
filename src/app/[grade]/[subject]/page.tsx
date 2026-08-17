@@ -61,6 +61,7 @@ function AvailabilityBadges({
   const badges = [
     { label: "теория", available: hasTheory(gradeId, subjectId, topic.id) },
     { label: "задачи", available: Boolean(materials?.tasks?.length) },
+    { label: "домашна", available: Boolean(materials?.homework?.length) },
     { label: "тест", available: Boolean(materials?.quiz) },
   ].filter((badge) => badge.available);
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import HomeworkList from "@/components/HomeworkList";
 import MdxContent from "@/components/MdxContent";
 import QuizPlayer from "@/components/QuizPlayer";
 import StrandList from "@/components/StrandList";
@@ -45,7 +46,7 @@ export async function generateMetadata({
   if (!found) return {};
   const { grade, subject, topic } = found;
   const path = topicPath(gradeId, subjectId, topicId);
-  const description = `${topic.title} — теория, практически задачи и тест за самопроверка. ${subject.name}, ${grade.label}, ${formatWeeks(topic.weeks).toLowerCase()}.`;
+  const description = `${topic.title} — теория, практически задачи, домашна работа и тест за самопроверка. ${subject.name}, ${grade.label}, ${formatWeeks(topic.weeks).toLowerCase()}.`;
 
   return {
     title: `${topic.title} · ${subject.name}`,
@@ -102,6 +103,7 @@ export default async function TopicPage({ params }: TopicParams) {
     { id: "programa", label: "Учебна програма" },
     { id: "teoria", label: "Теория" },
     { id: "zadachi", label: "Задачи" },
+    { id: "domashna", label: "Домашна работа" },
     { id: "test", label: "Тест" },
   ];
 
@@ -202,6 +204,22 @@ export default async function TopicPage({ params }: TopicParams) {
             <TaskList tasks={materials.tasks} />
           ) : (
             <ComingSoon what="Практическите задачи" />
+          )}
+        </div>
+      </section>
+
+      {/* Домашна работа — самостоятелна подготовка по седмици */}
+      <section className="mt-14">
+        <SectionHeading
+          id="domashna"
+          label="Самостоятелна подготовка"
+          title="Домашна работа по седмици"
+        />
+        <div className="mt-6">
+          {materials?.homework?.length ? (
+            <HomeworkList homework={materials.homework} />
+          ) : (
+            <ComingSoon what="Домашната работа" />
           )}
         </div>
       </section>

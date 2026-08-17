@@ -100,7 +100,22 @@ export interface PracticeTask {
   hint?: string;
 }
 
+/** Домашна работа — задача за самостоятелна подготовка към една седмица от темата. */
+export interface HomeworkAssignment {
+  id: string;
+  /** Учебна седмица от годината, в диапазона weeks на темата. */
+  week: number;
+  title: string;
+  /** Какво се очаква ученикът да направи самостоятелно. */
+  description: string;
+  steps?: string[];
+  /** Какво се носи/показва в следващия час. */
+  deliverable?: string;
+  hint?: string;
+}
+
 export interface TopicMaterials {
   quiz?: Quiz;
   tasks?: PracticeTask[];
+  homework?: HomeworkAssignment[];
 }
