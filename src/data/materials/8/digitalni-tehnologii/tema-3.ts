@@ -161,7 +161,7 @@ export const tema3: TopicMaterials = {
   homework: [
     {
       id: "t3-d1",
-      week: 7,
+      week: 13,
       title: "Информацията около теб",
       description:
         "Открий примери от своето ежедневие за петте типа цифрова информация.",
@@ -176,7 +176,7 @@ export const tema3: TopicMaterials = {
     },
     {
       id: "t3-d2",
-      week: 8,
+      week: 15,
       title: "Моята първа статистика",
       description:
         "Събери собствени данни за 5 дни и ги обработи в електронна таблица.",
@@ -191,7 +191,7 @@ export const tema3: TopicMaterials = {
     },
     {
       id: "t3-d3",
-      week: 9,
+      week: 17,
       title: "Структурирано или не?",
       description:
         "Определи вида на информацията, с която се сблъскваш всеки ден.",

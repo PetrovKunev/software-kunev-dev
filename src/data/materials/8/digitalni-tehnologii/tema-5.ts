@@ -174,7 +174,7 @@ export const tema5: TopicMaterials = {
   homework: [
     {
       id: "t5-d1",
-      week: 13,
+      week: 25,
       title: "Карта на домашната мрежа",
       description:
         "Разучи как е устроена мрежата у дома и я представи като схема.",
@@ -189,7 +189,7 @@ export const tema5: TopicMaterials = {
     },
     {
       id: "t5-d2",
-      week: 14,
+      week: 27,
       title: "Колко е сигурна мрежата ни?",
       description:
         "Провери настройките за сигурност на домашния Wi-Fi — с разрешение на родител.",
@@ -204,7 +204,7 @@ export const tema5: TopicMaterials = {
     },
     {
       id: "t5-d3",
-      week: 15,
+      week: 29,
       title: "Измери сигнала",
       description:
         "Изследвай как разстоянието до рутера влияе на скоростта на интернет.",

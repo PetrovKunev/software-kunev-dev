@@ -178,7 +178,7 @@ export const tema4: TopicMaterials = {
   homework: [
     {
       id: "t4-d1",
-      week: 10,
+      week: 19,
       title: "Операционните системи вкъщи",
       description:
         "Направи опис на устройствата у дома и на операционните системи, които те използват.",
@@ -193,7 +193,7 @@ export const tema4: TopicMaterials = {
     },
     {
       id: "t4-d2",
-      week: 11,
+      week: 21,
       title: "Провери за актуализации",
       description:
         "Разучи как устройствата ти получават актуализации и защо те са важни.",
@@ -208,7 +208,7 @@ export const tema4: TopicMaterials = {
     },
     {
       id: "t4-d3",
-      week: 12,
+      week: 23,
       title: "Какъв е лицензът?",
       description:
         "Проучи при какви условия използваш приложенията, с които работиш всеки ден.",

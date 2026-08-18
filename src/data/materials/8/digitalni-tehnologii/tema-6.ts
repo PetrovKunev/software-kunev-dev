@@ -172,7 +172,7 @@ export const tema6: TopicMaterials = {
   homework: [
     {
       id: "t6-d1",
-      week: 16,
+      week: 31,
       title: "Двата ми адреса",
       description:
         "Открий частния и публичния IP адрес, с които устройството ти работи в интернет.",
@@ -187,7 +187,7 @@ export const tema6: TopicMaterials = {
     },
     {
       id: "t6-d2",
-      week: 17,
+      week: 33,
       title: "ipconfig у дома",
       description:
         "Разчети пълните мрежови настройки на домашния си компютър.",
@@ -202,7 +202,7 @@ export const tema6: TopicMaterials = {
     },
     {
       id: "t6-d3",
-      week: 18,
+      week: 35,
       title: "DNS детектив",
       description:
         "Проследи как имената на сайтовете се превръщат в IP адреси.",

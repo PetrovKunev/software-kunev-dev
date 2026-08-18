@@ -4,8 +4,8 @@ import { notFound } from "next/navigation";
 import HomeworkList from "@/components/HomeworkList";
 import MdxContent from "@/components/MdxContent";
 import QuizPlayer from "@/components/QuizPlayer";
-import StrandList from "@/components/StrandList";
 import TaskList from "@/components/TaskList";
+import TopicSchedule from "@/components/TopicSchedule";
 import {
   formatWeeks,
   getAdjacentTopics,
@@ -100,7 +100,7 @@ export default async function TopicPage({ params }: TopicParams) {
   const { prev, next } = getAdjacentTopics(subject, topicId);
 
   const anchors = [
-    { id: "programa", label: "Учебна програма" },
+    { id: "programa", label: "График" },
     { id: "teoria", label: "Теория" },
     { id: "zadachi", label: "Задачи" },
     { id: "domashna", label: "Домашна работа" },
@@ -159,23 +159,23 @@ export default async function TopicPage({ params }: TopicParams) {
         </nav>
       </header>
 
-      {/* От учебната програма */}
+      {/* От учебната програма — седмичен график с редуване теория/практика */}
       <section className="mt-12">
         <SectionHeading
           id="programa"
           label="Из учебната програма"
-          title="Какво обхваща темата"
+          title="Седмичен график"
         />
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <StrandList
-            label="Теория"
-            accentClass="text-accent"
-            items={topic.theory.items}
-          />
-          <StrandList
-            label="Практика"
-            accentClass="text-cyan-glow"
-            items={topic.practice.items}
+        <p className="mt-4 text-sm text-muted">
+          Часът е веднъж седмично: в едната седмица — теория, в следващата —
+          практика по същия материал. Домашната работа се възлага в седмицата
+          с теория и се преглежда в часа по практика.
+        </p>
+        <div className="mt-6">
+          <TopicSchedule
+            weeks={topic.weeks}
+            theory={topic.theory}
+            practice={topic.practice}
           />
         </div>
       </section>

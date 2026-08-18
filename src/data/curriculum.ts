@@ -5,6 +5,9 @@ import type { Curriculum, Subject } from "./types";
  *
  * VIII клас, „Дигитални технологии“ — ТУП вариант В1:
  * 18 ч. теория на професията + 18 ч. учебна практика,
+ * по 1 час седмично в 36 учебни седмици с редуване:
+ * нечетна седмица от темата — теория, четна — практика.
+ * Всяка тема обхваща 6 седмици (3 двойки теория → практика).
  * Раздел I (Теми 1–3) и Раздел II (Теми 4–6),
  * Заповед № РД09-2274/09.06.2026 г.
  *
@@ -31,7 +34,7 @@ const digitalniTehnologii8: Subject = {
           id: "tema-1",
           number: 1,
           title: "Архитектура на компютърната система и файлова организация",
-          weeks: { from: 1, to: 3 },
+          weeks: { from: 1, to: 6 },
           theory: {
             items: [
               "Основни хардуерни компоненти на компютърна система",
@@ -51,7 +54,7 @@ const digitalniTehnologii8: Subject = {
           id: "tema-2",
           number: 2,
           title: "Софтуер за обработка на цифрово съдържание",
-          weeks: { from: 4, to: 6 },
+          weeks: { from: 7, to: 12 },
           theory: {
             items: [
               "Цифрово съдържание от различен тип — текст, таблици, изображения, аудио, видео",
@@ -70,7 +73,7 @@ const digitalniTehnologii8: Subject = {
           id: "tema-3",
           number: 3,
           title: "Видове цифрова информация и формати за обмен",
-          weeks: { from: 7, to: 9 },
+          weeks: { from: 13, to: 18 },
           theory: {
             items: [
               "Типове цифрова информация — текстова, числова, графична, аудио, видео",
@@ -97,7 +100,7 @@ const digitalniTehnologii8: Subject = {
           id: "tema-4",
           number: 4,
           title: "Операционни системи",
-          weeks: { from: 10, to: 12 },
+          weeks: { from: 19, to: 24 },
           theory: {
             items: [
               "Видове операционни системи и характеристики",
@@ -117,7 +120,7 @@ const digitalniTehnologii8: Subject = {
           id: "tema-5",
           number: 5,
           title: "Основи на компютърните мрежи",
-          weeks: { from: 13, to: 15 },
+          weeks: { from: 25, to: 30 },
           theory: {
             items: [
               "Основни типове мрежи",
@@ -137,7 +140,7 @@ const digitalniTehnologii8: Subject = {
           id: "tema-6",
           number: 6,
           title: "IP адресиране и мрежови услуги",
-          weeks: { from: 16, to: 18 },
+          weeks: { from: 31, to: 36 },
           theory: {
             items: [
               "Основи на IP адресирането",
