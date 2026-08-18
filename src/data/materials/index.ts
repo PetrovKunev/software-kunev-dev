@@ -1,6 +1,10 @@
 import type { TopicMaterials } from "@/data/types";
 import { tema1 } from "./8/digitalni-tehnologii/tema-1";
 import { tema2 } from "./8/digitalni-tehnologii/tema-2";
+import { tema3 } from "./8/digitalni-tehnologii/tema-3";
+import { tema4 } from "./8/digitalni-tehnologii/tema-4";
+import { tema5 } from "./8/digitalni-tehnologii/tema-5";
+import { tema6 } from "./8/digitalni-tehnologii/tema-6";
 
 /**
  * Регистър на материалите по теми.
@@ -14,4 +18,8 @@ import { tema2 } from "./8/digitalni-tehnologii/tema-2";
 export const materialsRegistry: Record<string, TopicMaterials> = {
   "8/digitalni-tehnologii/tema-1": tema1,
   "8/digitalni-tehnologii/tema-2": tema2,
+  "8/digitalni-tehnologii/tema-3": tema3,
+  "8/digitalni-tehnologii/tema-4": tema4,
+  "8/digitalni-tehnologii/tema-5": tema5,
+  "8/digitalni-tehnologii/tema-6": tema6,
 };
