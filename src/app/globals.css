@@ -18,8 +18,42 @@
   --color-accent-deep: #134e4a;
   --color-cyan-glow: #22d3ee;
 
+  --color-warn: #fbbf24;
+  --color-danger: #fca5a5;
+
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+/*
+ * Светъл режим — по-добра четимост в класната стая и на проектор.
+ * Активира се чрез data-theme="light" на <html> (виж ThemeToggle).
+ */
+:root {
+  color-scheme: dark;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --color-background: #f6f9fa;
+  --color-surface: #ffffff;
+  --color-surface-raised: #eef3f5;
+  --color-edge: #d5e0e5;
+  --color-edge-bright: #b6c9d2;
+
+  --color-foreground: #0f1c24;
+  --color-muted: #33474f;
+  --color-faint: #5b6f7a;
+
+  --color-accent: #0f766e;
+  --color-accent-bright: #115e59;
+  --color-accent-dim: #14b8a6;
+  --color-accent-deep: #99f6e4;
+  --color-cyan-glow: #0e7490;
+
+  --color-warn: #b45309;
+  --color-danger: #b91c1c;
 }
 
 html {
@@ -53,4 +87,19 @@ body {
 
 .text-glow {
   text-shadow: 0 0 20px rgb(45 212 191 / 0.35);
+}
+
+/* В светъл режим ефектите „сияние“ само намаляват контраста. */
+:root[data-theme="light"] .cyber-grid {
+  background-image:
+    linear-gradient(to right, rgb(15 118 110 / 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(15 118 110 / 0.06) 1px, transparent 1px);
+}
+
+:root[data-theme="light"] .glow-teal {
+  box-shadow: 0 1px 3px rgb(15 28 36 / 0.08);
+}
+
+:root[data-theme="light"] .text-glow {
+  text-shadow: none;
 }

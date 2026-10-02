@@ -143,7 +143,7 @@ export default function QuizPlayer({
                     ? isRight
                       ? "border-accent-dim bg-accent-deep/20 text-accent-bright"
                       : isSelected
-                        ? "border-red-500/50 bg-red-500/10 text-red-300"
+                        ? "border-red-500/50 bg-red-500/10 text-danger"
                         : "border-edge text-muted opacity-60"
                     : isSelected
                       ? "border-accent-dim bg-surface text-foreground"

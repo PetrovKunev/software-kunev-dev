@@ -12,8 +12,8 @@ const STYLES = {
     defaultTitle: "Съвет",
   },
   warn: {
-    border: "border-amber-500/40",
-    label: "text-amber-400",
+    border: "border-warn/40",
+    label: "text-warn",
     defaultTitle: "Внимание",
   },
 } as const;

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemeToggle from "./ThemeToggle";
 import { getAvailableGrades, subjectPath } from "@/lib/curriculum";
 
 export default function SiteHeader() {
@@ -39,6 +40,7 @@ export default function SiteHeader() {
               </Link>
             ))
           )}
+          <ThemeToggle />
         </nav>
       </div>
     </header>
