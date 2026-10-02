@@ -13,7 +13,7 @@ export default function HomeworkList({
           className="rounded-xl border border-edge bg-surface-raised p-5"
         >
           <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <span className="rounded-full border border-edge-bright bg-surface px-2.5 py-0.5 font-mono text-[11px] font-bold text-amber-400">
+            <span className="rounded-full border border-edge-bright bg-surface px-2.5 py-0.5 font-mono text-[11px] font-bold text-warn">
               Седмица {assignment.week}
             </span>
             <h3 className="font-semibold text-foreground">
@@ -34,7 +34,7 @@ export default function HomeworkList({
 
           {assignment.deliverable && (
             <p className="mt-4 rounded-lg border border-edge bg-surface p-3 text-sm text-muted">
-              <span className="font-mono text-[11px] font-bold tracking-wider text-amber-400 uppercase">
+              <span className="font-mono text-[11px] font-bold tracking-wider text-warn uppercase">
                 Носи в час:{" "}
               </span>
               {assignment.deliverable}
