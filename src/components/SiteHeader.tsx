@@ -1,6 +1,7 @@
 import Link from "next/link";
 import ThemeToggle from "./ThemeToggle";
 import { getAvailableGrades, subjectPath } from "@/lib/curriculum";
+import { GAMES_PATH } from "@/lib/games";
 
 export default function SiteHeader() {
   const grades = getAvailableGrades();
@@ -23,9 +24,10 @@ export default function SiteHeader() {
         </Link>
 
         <nav className="flex items-center gap-1 text-sm">
+          {/* На тесен екран логото води към началото — спестяваме място за „Игри“. */}
           <Link
             href="/"
-            className="rounded-md px-3 py-2 text-muted transition-colors hover:bg-surface hover:text-foreground"
+            className="hidden rounded-md px-3 py-2 text-muted transition-colors hover:bg-surface hover:text-foreground sm:block"
           >
             Начало
           </Link>
@@ -40,6 +42,12 @@ export default function SiteHeader() {
               </Link>
             ))
           )}
+          <Link
+            href={GAMES_PATH}
+            className="rounded-md px-3 py-2 text-muted transition-colors hover:bg-surface hover:text-accent-bright"
+          >
+            Игри
+          </Link>
           <ThemeToggle />
         </nav>
       </div>
