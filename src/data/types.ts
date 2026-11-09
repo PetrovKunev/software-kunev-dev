@@ -126,3 +126,39 @@ export interface TopicMaterials {
   tasks?: PracticeTask[];
   homework?: HomeworkAssignment[];
 }
+
+/* ---------------------------------------------------------------------------
+ * Учебни игри (раздел „Игри“, /igri).
+ * Всяка игра е самостоятелен HTML файл в public/games/, който се вгражда
+ * в страницата /igri/<id> чрез iframe — без промени по компонентите.
+ * ------------------------------------------------------------------------- */
+
+export interface GameTeacherNotes {
+  /** Какво упражняват учениците. */
+  goals: string[];
+  /** Как протича играта в часа. */
+  flow: string[];
+  /** Как се трупат и губят точки. */
+  scoring?: string[];
+  /** Практически бележки — устройства, запазване на прогреса и др. */
+  tips?: string[];
+}
+
+export interface Game {
+  /** URL slug, напр. "remont-na-bit". */
+  id: string;
+  title: string;
+  /** Кратко описание за карти и metadata. */
+  tagline: string;
+  /** Предмет, към който е играта (етикет — не е задължително да има страница в сайта). */
+  subject: string;
+  /** Клас, напр. "VIII клас". */
+  grade?: string;
+  /** Формат, напр. "Отборна игра в клас". */
+  format: string;
+  /** Ключови понятия, които играта упражнява. */
+  concepts: string[];
+  /** Път до HTML файла в public/, напр. "/games/remont-na-bit.html". */
+  src: string;
+  teacherNotes?: GameTeacherNotes;
+}

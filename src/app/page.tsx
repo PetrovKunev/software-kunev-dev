@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { countTopics, getGrades, subjectPath } from "@/lib/curriculum";
+import { GAMES_PATH, getGames } from "@/lib/games";
 
 export default function Home() {
   const grades = getGrades();
+  const games = getGames();
 
   return (
     <main>
@@ -89,6 +91,31 @@ export default function Home() {
           на бази данни“, „Уеб и мобилно програмиране“ и др. по типовия учебен
           план на специалността.
         </p>
+      </section>
+
+      {/* Учебни игри */}
+      <section className="mx-auto max-w-5xl px-6 pb-16">
+        <h2 className="text-sm font-semibold tracking-[0.2em] text-faint uppercase">
+          Учебни игри
+        </h2>
+
+        <Link
+          href={GAMES_PATH}
+          className="group mt-6 flex flex-col gap-4 rounded-xl border border-edge-bright bg-surface p-6 transition-colors hover:border-accent-dim sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>
+            <span className="block text-xl font-bold text-foreground group-hover:text-accent-bright">
+              Игровизация в часа →
+            </span>
+            <span className="mt-2 block text-sm text-muted">
+              Отборни мисии с точки, жокери и значки:{" "}
+              {games.map((game) => `„${game.title}“`).join(", ")}.
+            </span>
+          </span>
+          <span className="shrink-0 rounded-full border border-accent-deep bg-accent-deep/30 px-3 py-1 font-mono text-[11px] text-accent-bright">
+            {games.length} {games.length === 1 ? "игра" : "игри"}
+          </span>
+        </Link>
       </section>
     </main>
   );

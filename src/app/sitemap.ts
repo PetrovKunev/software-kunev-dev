@@ -5,6 +5,7 @@ import {
   subjectPath,
   topicPath,
 } from "@/lib/curriculum";
+import { GAMES_PATH, gamePath, getGames } from "@/lib/games";
 
 const BASE_URL = "https://software.kunev.dev";
 
@@ -27,6 +28,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     )
   );
 
+  const gamePages = getGames().map((game) => ({
+    url: `${BASE_URL}${gamePath(game.id)}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.6,
+  }));
+
   return [
     {
       url: BASE_URL,
@@ -35,5 +42,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     ...subjectPages,
     ...topicPages,
+    {
+      url: `${BASE_URL}${GAMES_PATH}`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    ...gamePages,
   ];
 }
